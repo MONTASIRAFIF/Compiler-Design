@@ -1,8 +1,4 @@
 #include <iostream>
-#include<bits/stdc++.h>
-#define 
-
-#define long long ll
 using namespace std;
 
 int main() {
@@ -11,9 +7,8 @@ int main() {
 	if (x == 4) {
 	   x = 40;
 	}
-	int y = 50;
-	int z = 60;
+	itn y = 50;
+	int #z = 60;
 	
 	return 0;
 }
-
