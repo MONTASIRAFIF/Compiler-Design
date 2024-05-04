@@ -1,5 +1,11 @@
-#include <bits/stdc++.h>
-#define long long ll
+#include <iostream>
+#include <fstream>
+#include <sstream>
+#include <vector>
+#include <map>
+#include <algorithm>
+#include <iomanip>
+
 using namespace std;
 
 bool ischar(char c) {
@@ -134,6 +140,7 @@ int main() {
 
                         if (isvalidvar.first == true) {
                             variables[words[i+1]]++;
+                            identifiermap[words[i+1]]++;
                             i++;
                             break;
                         } else {
@@ -205,7 +212,7 @@ int main() {
     cout << "Constants:" << setw(24) << "Identifiers:" << setw(24) << "Keywords:" << setw(26) << "Punctuations:" << "              Operators:" << endl << endl;
 
     for (size_t i = 0; i < max({constants.size(), identifiers.size(), keywords.size(), punctuations.size(), operators.size()}); ++i) {
-        if (i < identifiers.size() && none_of(invalids.begin(), invalids.end(), [&](const pair<string, string>& invalid) { return invalid.first == identifiers[i]; })) {
+        if (i < identifiers.size() && identifiermap[identifiers[i]] > 0 && none_of(invalids.begin(), invalids.end(), [&](const pair<string, string>& invalid) { return invalid.first == identifiers[i]; })) {
             cout << left << setw(24) << (i < constants.size() ? constants[i] : "")
                  << setw(24) << identifiers[i]
                  << setw(24) << (i < keywords.size() ? keywords[i] : "")
@@ -226,12 +233,5 @@ int main() {
     }
 
     getchar();
+    return 0;
 }
-
-
-
-
-
-
-
-
